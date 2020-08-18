@@ -1,2 +1,3 @@
-# pombabot
-Twitter bot that goes "pru"
+Recommended:
+
+Create venv and install tweepy afterwards
