@@ -12,16 +12,24 @@ def _is_tweet_valid(content):
     return False
 
 def _reply_option(tweet):
-    question = input(f"Reply to {tweet.text} ?")
+    question = input(f"Reply to {tweet.text} ? [y/n]")
     if question == "Y":
         print("reply")
     else:
         return
 
-for tweet in api.search(q="pomba", lang="pt", rpp=10):
-    content = str(tweet.text.encode('ascii','ignore'),'utf-8')
+def _follow_option(tweet):
+    author = tweet.author.screen_name
+    question = input(f"Follow {author}? [y/n]")
+    if question == "y":
+        # api.create_friendship(author)
+        print(f"followed {author}")
+
+
+for tweet in api.search(q="pomba", lang="pt", rpp=15):
+    content = str(tweet.text.encode('ascii','replace'),'utf-8')
     if _is_tweet_valid(content):
-        _reply_option(tweet)
-        print(tweet.id, content)
+        print(('@' +tweet.author.screen_name),'said: ', content,
+        '\n https://twitter.com/user/status/'+str(tweet.id)+'\n') # tweet.id
 
 

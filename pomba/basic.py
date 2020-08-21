@@ -5,4 +5,4 @@ import tweepy
 api = tweepy.API(auth)
 
 # # Create a tweet
-api.update_status("Pruu")
+api.update_status("Pru")
