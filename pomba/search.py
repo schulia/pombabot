@@ -27,7 +27,8 @@ def _follow_option(tweet):
 
 
 for tweet in api.search(q="pomba", lang="pt", rpp=15):
-    content = str(tweet.text.encode('ascii','replace'),'utf-8')
+    content = tweet.text
+
     if _is_tweet_valid(content):
         print(('@' +tweet.author.screen_name),'said: ', content,
         '\n https://twitter.com/user/status/'+str(tweet.id)+'\n') # tweet.id
